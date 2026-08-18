@@ -16,10 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
@@ -110,7 +110,7 @@ jobs:
           sed -i "s|image: ghcr.io/yousun1314/weather-backend:.*|image: ghcr.io/yousun1314/weather-backend:${{ steps.version.outputs.tag }}|" overlays/prod/backend/deployment.yaml
           # 更新 frontend 镜像标签
           sed -i "s|image: ghcr.io/yousun1314/weather-frontend:.*|image: ghcr.io/yousun1314/weather-frontend:${{ steps.version.outputs.tag }}|" overlays/prod/frontend/deployment.yaml
-          # 提交并推送
+          # 提交并推�?
           git config user.name "CI Bot"
           git config user.email "ci@github-actions"
           git add overlays/prod/
